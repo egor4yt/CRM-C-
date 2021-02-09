@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace EErmakov.SoftwareDevelop.Domain
 {
     /// <summary>
     /// Класс клиент
@@ -21,28 +21,31 @@
             FirstNote = FNote;
             SecondNote = SNote;
         }
-
+        
         /// <summary>
         /// Фамилия
         /// </summary>
         private string _lastName;
+
         /// <summary>
         /// Имя
         /// </summary>
         private string _firstName;
+
         /// <summary>
         /// Отчество
         /// </summary>
         private string _secondName;
+
         /// <summary>
         /// Примечание 1
         /// </summary>
-        public string FirstNote;
+        public string FirstNote { get; set; }
+
         /// <summary>
         /// Примечание 2
         /// </summary>
-        public string SecondNote;
-
+        public string SecondNote { get; set; }
 
         /// <summary>
         /// Фамилия клиента. Состоит из букв, и необязательного знака "-"
@@ -55,7 +58,7 @@
             }
             set
             {
-                if (true)//Значение может быть пустым. Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
+                if (!string.IsNullOrWhiteSpace(value))//Значение может быть пустым. Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
                 {
                     string result = "";
                     for (int i = 0; i < value.Length; i++)
@@ -64,6 +67,7 @@
                 }
             }
         }
+        
         /// <summary>
         /// Имя клиента. Состоит из букв, и необязательного знака "-"
         /// </summary>
@@ -75,7 +79,7 @@
             }
             set
             {
-                if (!string.IsNullOrEmpty(value)) // Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
+                if (!string.IsNullOrWhiteSpace(value)) // Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
                 {
                     string result = "";
                     for (int i = 0; i < value.Length; i++)
@@ -84,6 +88,7 @@
                 }
             }
         }
+        
         /// <summary>
         /// Отчество клиента. Состоит из букв, и необязательного знака "-"
         /// </summary>
@@ -104,6 +109,7 @@
                 }
             }
         }
+        
         /// <summary>
         /// Получение полного имени клиента
         /// </summary>
@@ -112,10 +118,10 @@
         {
             string result = LastName;
 
-            if (!string.IsNullOrEmpty(FirstName))
+            if (!string.IsNullOrWhiteSpace(FirstName))
                 result += $" {FirstName}";
 
-            if (!string.IsNullOrEmpty(SecondName))
+            if (!string.IsNullOrWhiteSpace(SecondName))
                 result += $" {SecondName}";
 
             return result;

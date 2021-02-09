@@ -1,9 +1,9 @@
+using EErmakov.SoftwareDevelop.Domain;
 using NUnit.Framework;
-using Domain;
 
 namespace EErmakov.SoftwareDevelop.Tests
 {
-    public class Tests
+    public class ClientTests
     {
         [SetUp]
         public void Setup()
@@ -18,6 +18,7 @@ namespace EErmakov.SoftwareDevelop.Tests
             // act
             c.LastName = "никоЋае¬";
             c.FirstName = "";
+            c.LastName = "   ";
 
             // assert
             Assert.AreEqual(c.LastName, "Ќиколаев");
