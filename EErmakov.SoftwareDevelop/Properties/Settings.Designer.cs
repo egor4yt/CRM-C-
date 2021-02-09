@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EErmakov.SoftwareDevelop.Application.Properties {
+namespace EErmakov.SoftwareDevelop.WindowsApplication.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EErmakov.SoftwareDevelop.Application
+namespace EErmakov.SoftwareDevelop.WindowsApplication
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

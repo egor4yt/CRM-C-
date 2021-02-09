@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EErmakov.SoftwareDevelop.Application.Properties {
+namespace EErmakov.SoftwareDevelop.WindowsApplication.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace EErmakov.SoftwareDevelop.Application.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EErmakov.SoftwareDevelop.Application.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EErmakov.SoftwareDevelop.WindowsApplication.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

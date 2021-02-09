@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace EErmakov.SoftwareDevelop
+namespace EErmakov.SoftwareDevelop.WindowsApplication
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

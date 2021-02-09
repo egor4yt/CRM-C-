@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{53AD5E65-DABA-4EAE-9DD8-85BFB859A3ED}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>EErmakov.SoftwareDevelop.Application</RootNamespace>
-    <AssemblyName>EErmakov.SoftwareDevelop.Application</AssemblyName>
+    <RootNamespace>EErmakov.SoftwareDevelop.WindowsApplication</RootNamespace>
+    <AssemblyName>EErmakov.SoftwareDevelop.WindowsApplication</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
