@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="Title">Название работы.</param>
         /// <param name="StandartPrice">Стандартная цена за работу. -1, если отсутствует.</param>
-        public Job(string Title, decimal StandartPrice)
+        public Job(string Title, decimal StandartPrice = -1)
         {
             this.Title = Title;
             this.StandartPrice = StandartPrice;
