@@ -5,10 +5,6 @@ namespace EErmakov.SoftwareDevelop.Tests
 {
     public class JobTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
         [Test]
         public void Title()
         {
@@ -16,7 +12,13 @@ namespace EErmakov.SoftwareDevelop.Tests
             Job j = new Job("Программирование", -1);
 
             // act
-            j.Title = "   ";
+            try
+            {
+                j.Title = "   ";
+                j.Title = "";
+                Assert.Fail("Не было вызвано исключение для Title");
+            }
+            catch { }
 
             // assert
             Assert.AreEqual(j.Title, "Программирование");
@@ -36,16 +38,21 @@ namespace EErmakov.SoftwareDevelop.Tests
             Assert.AreEqual(j.StandartPrice, 10.25M);
         }
         [Test]
-        public void StandartPriceLess0()
+        public void InvalidStandartPrice()
         {
             // arrange
             Job j = new Job("Программирование", 200M);
 
             // act
-            j.StandartPrice = 0;
+            try
+            {
+                j.StandartPrice = 0;
+                Assert.Fail("Не было вызвано исключение для StandartPrice");
+            }
+            catch { }
 
             // assert
-            Assert.AreEqual(j.StandartPrice, -1);
+            Assert.AreEqual(j.StandartPrice, 200M);
         }
     }
 }

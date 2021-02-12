@@ -1,4 +1,6 @@
-﻿namespace EErmakov.SoftwareDevelop.Domain
+﻿using System;
+
+namespace EErmakov.SoftwareDevelop.Domain
 {
     /// <summary>
     /// Класс клиент
@@ -20,8 +22,9 @@
             this.SecondName = SecondName;
             FirstNote = FNote;
             SecondNote = SNote;
+            Actual = true;
         }
-        
+
         /// <summary>
         /// Фамилия
         /// </summary>
@@ -38,9 +41,19 @@
         private string _secondName;
 
         /// <summary>
+        /// Актуальность клиента (удалён из БД если false)
+        /// </summary>
+        public bool Actual;
+
+        /// <summary>
         /// Примечание 1
         /// </summary>
         public string FirstNote { get; set; }
+
+        /// <summary>
+        /// Идентификатор клиента. Автоматически задаётся при сохранении общего списка клиентов.
+        /// </summary>
+        public uint Id { get; set; }
 
         /// <summary>
         /// Примечание 2
@@ -65,9 +78,10 @@
                         result += i == 0 ? value[i].ToString().ToUpper() : value[i].ToString().ToLower();
                     _lastName = result;
                 }
+                else throw new Exception("Поле фамилия не может быть пустым или состоять из пробелов");
             }
         }
-        
+
         /// <summary>
         /// Имя клиента. Состоит из букв, и необязательного знака "-"
         /// </summary>
@@ -79,37 +93,39 @@
             }
             set
             {
-                if (!string.IsNullOrWhiteSpace(value)) // Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
+                if (!string.IsNullOrWhiteSpace(value) || value == "") // Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
                 {
                     string result = "";
                     for (int i = 0; i < value.Length; i++)
                         result += i == 0 ? value[i].ToString().ToUpper() : value[i].ToString().ToLower();
                     _firstName = result;
                 }
+                else throw new Exception("Поле имя не может состоять из пробелов");
             }
         }
-        
+
         /// <summary>
         /// Отчество клиента. Состоит из букв, и необязательного знака "-"
         /// </summary>
-        public string SecondName 
+        public string SecondName
         {
             get
             {
                 return _secondName;
             }
-            set 
+            set
             {
-                if (true)//Значение может быть пустым. Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
+                if (!string.IsNullOrWhiteSpace(value) || value == "")//Значение может быть пустым. Доработать проверку: "Если не содержит цирф, пробелов и лишних символов"
                 {
                     string result = "";
                     for (int i = 0; i < value.Length; i++)
                         result += i == 0 ? value[i].ToString().ToUpper() : value[i].ToString().ToLower();
                     _secondName = result;
                 }
+                else throw new Exception($"Поле отчество не может состоять из пробелов");
             }
         }
-        
+
         /// <summary>
         /// Получение полного имени клиента
         /// </summary>

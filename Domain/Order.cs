@@ -1,4 +1,6 @@
-﻿namespace EErmakov.SoftwareDevelop.Domain
+﻿using System;
+
+namespace EErmakov.SoftwareDevelop.Domain
 {
     public class Order
     {
@@ -10,8 +12,8 @@
         /// <param name="Price">Цена за работу</param>
         public Order(Client Client, string JobTitle, decimal Price)
         {
-            this.Client = Client;
-            this.Job = new Job(JobTitle);
+            ClientId = Client.Id;
+            this.JobTitle = JobTitle;
             this.Price = Price;
         }
 
@@ -22,25 +24,41 @@
         /// <param name="Job">Экземпляр класса Job, имеющий значение стандартной цены больше 0</param>
         public Order(Client Client, Job Job)
         {
-            this.Client = Client;
-            this.Job = Job;
-            this.Price = Job.StandartPrice > 0 ? Job.StandartPrice : 0;
+            ClientId = Client.Id;
+            JobTitle = Job.Title;
+            if (Job.StandartPrice > 0)
+                Price = Job.StandartPrice;
+            else throw new Exception("При создании заказа был передан объект Job с недопустимым значением стандартной цены");
         }
 
         /// <summary>
         /// Цена за работу
         /// </summary>
         private decimal _price;
+        private string _jobTitle;
 
         /// <summary>
-        /// Клиент
+        /// Идентификатор клиента
         /// </summary>
-        public Client Client { get; set; }
+        public uint ClientId { get; set; }
+        /// <summary>
+        /// Идентификатор заказа. Автоматически задаётся при сохранении
+        /// </summary>
+        public uint Id { get; set; }
 
         /// <summary>
         /// Работа, выполняемая в заказе
         /// </summary>
-        public Job Job { get; set; }
+        public string JobTitle
+        {
+            get{ return _jobTitle; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _jobTitle = value;
+                else throw new Exception("Название работы не может быть пустым");
+            }
+        }
 
         /// <summary>
         /// Цена за работу. больше 0
@@ -52,6 +70,7 @@
             {
                 if (value > 0)
                     _price = value;
+                else throw new Exception("Цена должна быть больше 0");
             }
         }
     }

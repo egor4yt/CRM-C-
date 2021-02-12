@@ -18,7 +18,12 @@ namespace EErmakov.SoftwareDevelop.Tests
             // act
             c.LastName = "никоЛаеВ";
             c.FirstName = "";
-            c.LastName = "   ";
+            try
+            {
+                c.LastName = "   ";
+                Assert.Fail("Не было вызвано исключение для LastName");
+            }
+            catch {}
 
             // assert
             Assert.AreEqual(c.LastName, "Николаев");
@@ -70,7 +75,7 @@ namespace EErmakov.SoftwareDevelop.Tests
             c.FirstName = "";
 
             // assert
-            Assert.AreEqual(c.GetFullName(), "Ермаков Егор Дмитриевич");
+            Assert.AreEqual(c.GetFullName(), "Ермаков Дмитриевич");
         }
     }
 }

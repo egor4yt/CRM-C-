@@ -1,4 +1,6 @@
-﻿namespace EErmakov.SoftwareDevelop.Domain
+﻿using System;
+
+namespace EErmakov.SoftwareDevelop.Domain
 {
     public class Job
     {
@@ -24,29 +26,37 @@
         private string _title;
 
         /// <summary>
+        /// Идентификатор работы. Автоматически задаётся при сохранении общего списка работ.
+        /// </summary>
+        public uint Id { get; set; }
+
+
+        /// <summary>
         /// Название работы. Непустая строка.
         /// </summary>
-        public string Title 
+        public string Title
         {
             get { return _title; }
-            set 
+            set
             {
                 if (!string.IsNullOrWhiteSpace(value))
                     _title = value;
+                else throw new Exception("Название работы не может быть пустым или состоять из пробелов");
+
             }
         }
 
         /// <summary>
         /// Стандартная цена работы. Значение должно быть больше 0. Если стандартной цены нет, или получено значение <= 0, то цена будет -1
         /// </summary>
-        public decimal StandartPrice 
+        public decimal StandartPrice
         {
             get { return _standartPrice; }
             set
             {
-                if (value > 0)
+                if (value > 0 || value == -1)
                     _standartPrice = value;
-                else _standartPrice = -1;
+                else throw new Exception("Значение стандартной цены должно быть больше 0, или равно -1");
             }
         }
     }
