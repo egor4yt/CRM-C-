@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>EErmakov.SoftwareDevelop.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomControls\MenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +69,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MenuButton.xaml.cs">
+      <DependentUpon>MenuButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -103,6 +113,21 @@
       <Project>{acba2ee9-fe6b-4f76-b770-e76b26c305b0}</Project>
       <Name>SoftwareDevelopmentKit</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MenuSettingsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ErrorIcon.png" />
+    <Resource Include="Resources\MenuJobsIcon.png" />
+    <Resource Include="Resources\MenuClientsIcon.png" />
+    <Resource Include="Resources\MenuOrdersIcon.png" />
+    <Resource Include="Resources\MenuExportIcon.png" />
+    <Resource Include="Resources\DeleteIcon.png" />
+    <Resource Include="Resources\ExxportIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CloseAppButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

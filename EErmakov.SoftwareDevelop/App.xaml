@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:EErmakov.SoftwareDevelop.WindowsApplication"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="btnCloseApp" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Image Source="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/CloseAppButton.png"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

@@ -24,5 +24,39 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication
         {
             InitializeComponent();
         }
+
+        private void btnCloseApp_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMenuOrders_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void btnMenuClients_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnMenuJobs_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnMenuExport_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnMenuSettings_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 }

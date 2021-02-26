@@ -1,12 +1,72 @@
-﻿<Window x:Class="EErmakov.SoftwareDevelop.WindowsApplication.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EErmakov.SoftwareDevelop.WindowsApplication"
+        xmlns:CustomControls="clr-namespace:EErmakov.SoftwareDevelop.WindowsApplication.CustomControls" x:Class="EErmakov.SoftwareDevelop.WindowsApplication.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1200" WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Menu header-->
+        <Grid Grid.Row="0">
+            <Border Background="#FF2A3541" CornerRadius="16 0 0 0"/>
+            <TextBlock Text="FREE CRM" FontSize="28" FontFamily="Comic Sans MS"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Foreground="White"/>
+        </Grid>
+
+        <!--Header application-->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Border Background="White" CornerRadius="0 16 0 0"/>
+            <Button x:Name="btnCloseApp" Style="{StaticResource btnCloseApp}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Width="40" Height="40"
+                    Click="btnCloseApp_Click"/>
+        </Grid>
+
+        <!--Menu body-->
+        <Grid Grid.Row="1">
+            <Border Background="#FF2A3541" CornerRadius="0 0 0 6"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <CustomControls:MenuButton x:Name="btnMenuOrders" Text="Заказы" PreviewMouseUp="btnMenuOrders_PreviewMouseUp"
+                                           IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuOrdersIcon.png"/>
+                <CustomControls:MenuButton x:Name="btnMenuClients" Text="Клиенты" PreviewMouseDown="btnMenuClients_PreviewMouseDown"
+                                           IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuClientsIcon.png"/>
+                <CustomControls:MenuButton x:Name="btnMenuJobs" Text="Работы" PreviewMouseDown="btnMenuJobs_PreviewMouseDown"
+                                           IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuJobsIcon.png"/>
+                <CustomControls:MenuButton x:Name="btnMenuExport" Text="Отчет" PreviewMouseDown="btnMenuExport_PreviewMouseDown"
+                                           IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuExportIcon.png"/>
+                <CustomControls:MenuButton x:Name="btnMenuSettings" Text="Настройки" MouseDown="btnMenuSettings_MouseDown"
+                                           IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuSettingsIcon.png"/>
+            </StackPanel>
+
+        </Grid>
+
+        <!--Body application-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Border CornerRadius="0 0 6 0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                        <GradientStop Color="#FFD6D6D6" Offset="0.2"/>
+                        <GradientStop Color="#FFE6E6E6" Offset="0.5"/>
+                        <GradientStop Color="#FFD6D6D6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
+        </Grid>
+
     </Grid>
 </Window>
