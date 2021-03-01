@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EErmakov.SoftwareDevelop.Domain;
+using EErmakov.SoftwareDevelop.SoftwareDevelopmentKit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,19 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
         public JobsPage()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            dgListJobs.ItemsSource = null;
+            List<Job> jobs = new List<Job>();
+            CSV.Load(out jobs);
+            dgListJobs.ItemsSource = jobs;
         }
     }
 }
