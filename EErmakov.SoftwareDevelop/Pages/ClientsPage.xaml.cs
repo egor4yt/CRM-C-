@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для JobsPage.xaml
+    /// Логика взаимодействия для ClientsPage.xaml
     /// </summary>
-    public partial class JobsPage : Page
+    public partial class ClientsPage : Page
     {
-        public JobsPage()
+        public ClientsPage()
         {
             InitializeComponent();
         }
