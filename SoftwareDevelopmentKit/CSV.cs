@@ -137,7 +137,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
         /// Сохранение списка работ
         /// </summary>
         /// <param name="jobs">Список работ для сохранения</param>
-        public static void Save(List<Job> jobs)
+        public static void Save(ref List<Job> jobs)
         {
             if (!Directory.Exists(PathDataFolder))
                 Directory.CreateDirectory(PathDataFolder);
