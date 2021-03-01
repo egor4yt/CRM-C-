@@ -164,7 +164,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             for (int i = 0; i < jobs.Count; i++)
                 foreach (Job job in jobs)
                     if (jobs.Where(j => j.Id == job.Id).ToList().Count != 1)
-                        throw new Exception("При сохранении были созданы объекты с одинаковым идентификатором");
+                        throw new Exception("При сохранении были созданы объекты с одинаковым идентификатором!");
         }
         /// <summary>
         /// Загрузка сохранённых работ в передаваемый список
