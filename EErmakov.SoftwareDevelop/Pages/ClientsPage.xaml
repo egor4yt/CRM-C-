@@ -9,6 +9,6 @@
       Title="ClientsPage">
 
     <Grid>
-        
+        <TextBlock Text="Клиенты"/>
     </Grid>
 </Page>
