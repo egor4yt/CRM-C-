@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using EErmakov.SoftwareDevelop.WindowsApplication.Pages;
 
 namespace EErmakov.SoftwareDevelop.WindowsApplication
 {
@@ -23,40 +13,41 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication
         public MainWindow()
         {
             InitializeComponent();
+            PageManager.MainFrame = MainFrame;
         }
 
         private void btnCloseApp_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnMenuOrders_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            PageManager.MainFrame.Navigate(new OrdersPage());
         }
 
         private void btnMenuClients_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            PageManager.MainFrame.Navigate(new ClientsPage());
         }
 
         private void btnMenuJobs_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            PageManager.MainFrame.Navigate(new JobsPage());
         }
 
         private void btnMenuExport_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            PageManager.MainFrame.Navigate(new ExportPage());
         }
 
         private void btnMenuSettings_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            PageManager.MainFrame.Navigate(new SettingsPage());
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
-
         }
     }
 }

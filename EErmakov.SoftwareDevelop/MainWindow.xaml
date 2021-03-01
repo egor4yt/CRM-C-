@@ -65,7 +65,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated" Source="Pages/OrdersPage.xaml"/>
         </Grid>
 
     </Grid>
