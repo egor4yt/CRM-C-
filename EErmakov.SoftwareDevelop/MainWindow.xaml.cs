@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using EErmakov.SoftwareDevelop.WindowsApplication.Pages;
 
 namespace EErmakov.SoftwareDevelop.WindowsApplication
@@ -44,10 +43,6 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication
         private void btnMenuSettings_MouseDown(object sender, MouseButtonEventArgs e)
         {
             PageManager.MainFrame.Navigate(new SettingsPage());
-        }
-
-        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
-        {
         }
     }
 }
