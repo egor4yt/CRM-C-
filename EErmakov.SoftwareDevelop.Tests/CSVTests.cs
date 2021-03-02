@@ -46,7 +46,7 @@ namespace EErmakov.SoftwareDevelop.Tests
             NewJobs.Add(new Job("Программирование", 110));
 
             // act
-            CSV.Save(NewJobs);
+            CSV.Save(ref NewJobs);
             List<Job> LoadedJobs = new List<Job>();
             CSV.Load(out LoadedJobs);
 
