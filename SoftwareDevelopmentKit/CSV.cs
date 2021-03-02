@@ -137,7 +137,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
         /// Сохранение списка работ
         /// </summary>
         /// <param name="jobs">Список работ для сохранения</param>
-        public static void Save(List<Job> jobs)
+        public static void Save(ref List<Job> jobs)
         {
             if (!Directory.Exists(PathDataFolder))
                 Directory.CreateDirectory(PathDataFolder);
@@ -164,7 +164,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             for (int i = 0; i < jobs.Count; i++)
                 foreach (Job job in jobs)
                     if (jobs.Where(j => j.Id == job.Id).ToList().Count != 1)
-                        throw new Exception("При сохранении были созданы объекты с одинаковым идентификатором");
+                        throw new Exception("При сохранении были созданы объекты с одинаковым идентификатором!");
         }
         /// <summary>
         /// Загрузка сохранённых работ в передаваемый список
