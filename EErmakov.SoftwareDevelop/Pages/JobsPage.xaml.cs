@@ -51,7 +51,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
 
         private void btnEditElement_Click(object sender, RoutedEventArgs e)
         {
-            gListOrders.Visibility = Visibility.Collapsed;
+            gListJobs.Visibility = Visibility.Collapsed;
             gEditJob.Visibility = Visibility.Visible;
             DataContext = null;
             DataContext = (sender as Button).DataContext as Job;
@@ -87,7 +87,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
             CSV.Save(ref jobs);
             RefreshData();
             DataContext = null;
-            gListOrders.Visibility = Visibility.Visible;
+            gListJobs.Visibility = Visibility.Visible;
             gEditJob.Visibility = Visibility.Collapsed;
         }
 
@@ -102,7 +102,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             RefreshData();
-            gListOrders.Visibility = Visibility.Visible;
+            gListJobs.Visibility = Visibility.Visible;
             gEditJob.Visibility = Visibility.Collapsed;
         }
     }
