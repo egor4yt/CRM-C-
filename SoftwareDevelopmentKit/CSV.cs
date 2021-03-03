@@ -40,7 +40,15 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 uint lastId = 0;
                 foreach (var c in clients)
                 {
-                    c.Id = lastId;
+                    if (c.Id == 0)
+                    {
+                        c.Id = lastId;
+                        lastId++;
+                    }
+                    else
+                    {
+                        lastId = c.Id;
+                    }
                     sw.WriteLine($"{c.Id};{c.FirstName};{c.SecondName};{c.LastName};{c.FirstNote};{c.SecondNote}");
                     lastId++;
                 }
@@ -251,7 +259,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 foreach (var o in orders)
                 {
                     o.Id = lastid;
-                    sw.WriteLine($"{o.Id};{o.ClientId};{o.JobTitle};{o.Price}");
+                    sw.WriteLine($"{o.Id};{o.Client.Id};{o.JobTitle};{o.Price};{Convert.ToInt32(o.State)};{Convert.ToInt32(o.Payed)}");
                     lastid++;
                 }
                 sw.Close();
@@ -285,6 +293,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
 
             List<Client> clients = new List<Client>();
             Load(out clients);
+
             int i = 0;
             while (i < data.Length - 1)
             {
@@ -320,7 +329,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 }
                 i++;
 
-                while (data[i] != '\r' && data[i] != '\n')
+                while (data[i] != ';' )
                 {
                     param += data[i] != '\n' ? data[i].ToString() : "";
                     i++;
@@ -329,8 +338,35 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 decimal price;
                 if (!decimal.TryParse(param, out price))
                     throw new Exception($"не удалось преобразовать цену заказа в числовой тип \"{param}\"");
+                param = "";
+
+                while (data[i] != ';')
+                {
+                    param += data[i] != '\n' ? data[i].ToString() : "";
+                    i++;
+                }
+                i++;
+                int state;
+                if (!int.TryParse(param, out state))
+                    throw new Exception($"не удалось преобразовать статус заказа в числовой тип \"{param}\"");
+                param = "";
+
+                while (data[i] != '\r' && data[i] != '\n')
+                {
+                    param += data[i] != '\n' ? data[i].ToString() : "";
+                    i++;
+                }
+                i++;
+                bool payed = false;
+                if (param == "1") payed = true;
+                param = "";
+
+
+
 
                 Order neworder = new Order(clients.Where(c => c.Id == clientid).FirstOrDefault(), jobtitle, price);
+                neworder.State = (State)state;
+                neworder.Payed = payed;
 
                 neworder.Id = id;
                 param = "";
