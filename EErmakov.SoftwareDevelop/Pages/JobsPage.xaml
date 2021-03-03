@@ -9,7 +9,7 @@
       Title="Работы" Loaded="Page_Loaded">
     <Grid>
         <!--Список работ-->
-        <Grid Visibility="Visible" x:Name="gListOrders" Grid.Row="0" Grid.RowSpan="2">
+        <Grid Visibility="Visible" x:Name="gListJobs" Grid.Row="0" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
@@ -69,7 +69,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnCreateElement" Content="Добавить элемент"
+            <Button x:Name="btnCreateElement" Content="Добавить клиента"
                     Width="200" Height="30" Grid.Row="2"
                     HorizontalAlignment="Right" Margin="0 0 15 0" Click="btnEditElement_Click"/>
         </Grid>
