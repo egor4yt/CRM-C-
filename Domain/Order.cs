@@ -12,11 +12,10 @@ namespace EErmakov.SoftwareDevelop.Domain
         /// <param name="Price">Цена за работу</param>
         public Order(Client Client, string JobTitle, decimal Price)
         {
-            ClientId = Client.Id;
+            this.Client = Client;
             this.JobTitle = JobTitle;
             this.Price = Price;
         }
-
         /// <summary>
         /// Конструктор класса Order
         /// </summary>
@@ -24,7 +23,7 @@ namespace EErmakov.SoftwareDevelop.Domain
         /// <param name="Job">Экземпляр класса Job, имеющий значение стандартной цены больше 0</param>
         public Order(Client Client, Job Job)
         {
-            ClientId = Client.Id;
+            this.Client = Client;
             JobTitle = Job.Title;
             if (Job.StandartPrice > 0)
                 Price = Job.StandartPrice;
@@ -35,23 +34,56 @@ namespace EErmakov.SoftwareDevelop.Domain
         /// Цена за работу
         /// </summary>
         private decimal _price;
-        private string _jobTitle;
-
         /// <summary>
-        /// Идентификатор клиента
+        /// Название работы
         /// </summary>
-        public uint ClientId { get; set; }
+        private string _jobTitle;
+        /// <summary>
+        /// Клиент
+        /// </summary>
+        public Client Client { get; set; }
         /// <summary>
         /// Идентификатор заказа. Автоматически задаётся при сохранении
         /// </summary>
         public uint Id { get; set; }
-
+        /// <summary>
+        /// Состояние заказа
+        /// </summary>
+        public State State { get; set; }
+        /// <summary>
+        /// Статус выполнения заказа
+        /// </summary>
+        public string StatusWork
+        {
+            get
+            {
+                switch (State)
+                {
+                    case Domain.State.Queue:
+                        return "В очереди";
+                    case Domain.State.InProgress:
+                        return "Выполняется";
+                    case Domain.State.Done:
+                        return "Выполнено";
+                    default:
+                        return "Неизвестно";
+                }
+            }
+        }
+        /// <summary>
+        /// Состояние оплаты заказа
+        /// </summary>
+        public bool Payed { get; set; }
+        /// <summary>
+        /// Статус оплаты заказа
+        /// </summary>
+        public string StatusPay { get { return Payed ? "Оплачено" : "Не оплачено"; } }
         /// <summary>
         /// Работа, выполняемая в заказе
         /// </summary>
         public string JobTitle
         {
-            get{ return _jobTitle; }
+            get { return _jobTitle; }
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
@@ -73,5 +105,11 @@ namespace EErmakov.SoftwareDevelop.Domain
                 else throw new Exception("Цена должна быть больше 0");
             }
         }
+    }
+    public enum State
+    {
+        Queue,
+        InProgress,
+        Done
     }
 }

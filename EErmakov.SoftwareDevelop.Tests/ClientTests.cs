@@ -63,7 +63,7 @@ namespace EErmakov.SoftwareDevelop.Tests
             c.SecondName = "викторович";
 
             // assert
-            Assert.AreEqual(c.GetFullName(), "Николаев Антон Викторович");
+            Assert.AreEqual(c.GetFullName, "Николаев Антон Викторович");
         }
         [Test]
         public void InitializeClient()
@@ -75,7 +75,7 @@ namespace EErmakov.SoftwareDevelop.Tests
             c.FirstName = "";
 
             // assert
-            Assert.AreEqual(c.GetFullName(), "Ермаков Дмитриевич");
+            Assert.AreEqual(c.GetFullName, "Ермаков Дмитриевич");
         }
     }
 }

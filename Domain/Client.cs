@@ -22,7 +22,6 @@ namespace EErmakov.SoftwareDevelop.Domain
             this.SecondName = SecondName;
             FirstNote = FNote;
             SecondNote = SNote;
-            Actual = true;
         }
 
         /// <summary>
@@ -39,11 +38,6 @@ namespace EErmakov.SoftwareDevelop.Domain
         /// Отчество
         /// </summary>
         private string _secondName;
-
-        /// <summary>
-        /// Актуальность клиента (удалён из БД если false)
-        /// </summary>
-        public bool Actual;
 
         /// <summary>
         /// Примечание 1
@@ -130,17 +124,20 @@ namespace EErmakov.SoftwareDevelop.Domain
         /// Получение полного имени клиента
         /// </summary>
         /// <returns>Строка в формате "Фамилия Имя Отчество", если они есть</returns>
-        public string GetFullName()
+        public string GetFullName
         {
-            string result = LastName;
+            get
+            {
+                string result = LastName;
 
-            if (!string.IsNullOrWhiteSpace(FirstName))
-                result += $" {FirstName}";
+                if (!string.IsNullOrWhiteSpace(FirstName))
+                    result += $" {FirstName}";
 
-            if (!string.IsNullOrWhiteSpace(SecondName))
-                result += $" {SecondName}";
+                if (!string.IsNullOrWhiteSpace(SecondName))
+                    result += $" {SecondName}";
 
-            return result;
+                return result;
+            }
         }
     }
 }

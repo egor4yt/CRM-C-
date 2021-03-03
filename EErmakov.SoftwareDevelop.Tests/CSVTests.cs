@@ -79,6 +79,8 @@ namespace EErmakov.SoftwareDevelop.Tests
             NewOrders.Add(new Order(NewClients[1], "Дизайн", 200));
             NewOrders.Add(new Order(NewClients[0], "Программирование", 100.50m));
             NewOrders.Add(new Order(NewClients[2], NewJobs[0].Title, 115));
+            NewOrders[1].State = State.InProgress;
+            NewOrders[2].Payed=true;
             CSV.Save(ref NewOrders);
             CSV.Load(out LoadedOrders);
 
@@ -87,9 +89,12 @@ namespace EErmakov.SoftwareDevelop.Tests
             {
                 foreach (Order order in LoadedOrders)
                     if (LoadedOrders.Where(o => o.Id == order.Id).ToList().Count != 1) Assert.Fail($"В таблице есть объекты с одинаковым идентификатором");
-                if (LoadedOrders[i].ClientId != LoadedOrders[i].ClientId) Assert.Fail($"не сошелся идентификатор клиента у заказов {i}");
-                if (LoadedOrders[i].JobTitle != LoadedOrders[i].JobTitle) Assert.Fail($"не сошлось название работы у заказов [{i}]");
-                if (LoadedOrders[i].Price != LoadedOrders[i].Price) Assert.Fail($"не сошлась цена у заказов [{i}]");
+
+                if (LoadedOrders[i].Client.Id != NewOrders[i].Client.Id) Assert.Fail($"не сошелся идентификатор клиента у заказов {i}");
+                if (LoadedOrders[i].JobTitle != NewOrders[i].JobTitle) Assert.Fail($"не сошлось название работы у заказов [{i}]");
+                if (LoadedOrders[i].Price != NewOrders[i].Price) Assert.Fail($"не сошлась цена у заказов [{i}]");
+                if (LoadedOrders[i].Payed != NewOrders[i].Payed) Assert.Fail($"не сошелся статус оплаты у заказов [{i}]");
+                if (LoadedOrders[i].State != NewOrders[i].State) Assert.Fail($"не сошелся статус оплаты у заказов [{i}]");
             }
             Assert.AreEqual(LoadedOrders.Count, NewOrders.Count);
         }
