@@ -80,7 +80,7 @@ namespace EErmakov.SoftwareDevelop.Tests
             NewOrders.Add(new Order(NewClients[0], "Программирование", 100.50m));
             NewOrders.Add(new Order(NewClients[2], NewJobs[0].Title, 115));
             NewOrders[1].State = State.InProgress;
-            NewOrders[2].Payed=true;
+            NewOrders[2].Payed = true;
             CSV.Save(ref NewOrders);
             CSV.Load(out LoadedOrders);
 
@@ -97,6 +97,29 @@ namespace EErmakov.SoftwareDevelop.Tests
                 if (LoadedOrders[i].State != NewOrders[i].State) Assert.Fail($"не сошелся статус оплаты у заказов [{i}]");
             }
             Assert.AreEqual(LoadedOrders.Count, NewOrders.Count);
+        }
+
+        [Test]
+        public void SaveAndLoadApplicationData()
+        {
+            // arrange
+            ApplicationSettings.CompanyName = "FreeCRM";
+            ApplicationSettings.FirstNoteClient = "Заметка 1";
+            ApplicationSettings.SecondNoteClient = "Заметка 2";
+
+            // act
+            CSV.SaveApplicationData();
+            ApplicationSettings.CompanyName = "eeCRM";
+            ApplicationSettings.FirstNoteClient = "Замка 1";
+            ApplicationSettings.SecondNoteClient = "Заа 2";
+            CSV.LoadApplicationData();
+
+
+            // assert
+            if (ApplicationSettings.CompanyName != "FreeCRM") Assert.Fail($"неверно загружено название кампании");
+            if (ApplicationSettings.FirstNoteClient != "Заметка 1") Assert.Fail($"неверно загружено название заметки 1");
+            if (ApplicationSettings.SecondNoteClient != "Заметка 2") Assert.Fail($"неверно загружено название заметки 2");
+            Assert.Pass();
         }
     }
 }

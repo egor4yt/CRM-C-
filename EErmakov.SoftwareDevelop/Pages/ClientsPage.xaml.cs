@@ -61,17 +61,22 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
 
         private void btnDeleteElement_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder errors = new StringBuilder();
             Client CurrentClient = (sender as Button).DataContext as Client;
-            List<>
+            List<Order> orders = new List<Order>();
+            CSV.Load(out orders);
 
-            if ()
+            if (orders.Where(o => o.Client.Id == CurrentClient.Id).Count() > 0) errors.AppendLine("Этот клиент участвует в Заказе");
+
+            if (errors.Length > 0) { MessageBox.Show($"{errors}", "Ошибка удаления", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+
 
             if (MessageBox.Show($"Удалить клиента \"{CurrentClient.GetFullName}\"?", "Удаление клиента", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                clients.Remove(CurrentClient);
-                CSV.Save(ref clients);
-                RefreshData();
-            }
+                {
+                    clients.Remove(CurrentClient);
+                    CSV.Save(ref clients);
+                    RefreshData();
+                }
         }
 
         private void btnEditElement_Click(object sender, RoutedEventArgs e)
