@@ -27,9 +27,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\ClientsTest.csv";
+            string FilePath = PathDataFolder + @"\ClientsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Clients.csv";
+            string FilePath = PathDataFolder + @"\Clients.fcd";
 #endif
 
 
@@ -69,9 +69,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             loadedClients = new List<Client>();
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\ClientsTest.csv";
+            string FilePath = PathDataFolder + @"\ClientsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Clients.csv";
+            string FilePath = PathDataFolder + @"\Clients.fcd";
 #endif
 
             StringBuilder data = new StringBuilder();
@@ -151,9 +151,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\JobsTest.csv";
+            string FilePath = PathDataFolder + @"\JobsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Jobs.csv";
+            string FilePath = PathDataFolder + @"\Jobs.fcd";
 #endif
             using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate)) { }
 
@@ -183,9 +183,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             loadedJobs = new List<Job>();
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\JobsTest.csv";
+            string FilePath = PathDataFolder + @"\JobsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Jobs.csv";
+            string FilePath = PathDataFolder + @"\Jobs.fcd";
 
 #endif
 
@@ -247,9 +247,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\OrdersTest.csv";
+            string FilePath = PathDataFolder + @"\OrdersTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Orders.csv";
+            string FilePath = PathDataFolder + @"\Orders.fcd";
 #endif
             using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate)) { }
 
@@ -279,9 +279,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             loadedOrders = new List<Order>();
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\OrdersTest.csv";
+            string FilePath = PathDataFolder + @"\OrdersTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Orders.csv";
+            string FilePath = PathDataFolder + @"\Orders.fcd";
 #endif
 
             StringBuilder data = new StringBuilder();
@@ -329,7 +329,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 }
                 i++;
 
-                while (data[i] != ';' )
+                while (data[i] != ';')
                 {
                     param += data[i] != '\n' ? data[i].ToString() : "";
                     i++;
@@ -373,6 +373,71 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 jobtitle = "";
 
                 loadedOrders.Add(neworder);
+            }
+        }
+        /// <summary>
+        /// Сохранение данных приложения, заданных статическим классом Domain.ApplicationSettings
+        /// </summary>
+        public static void SaveApplicationData()
+        {
+            if (!Directory.Exists(PathDataFolder))
+                Directory.CreateDirectory(PathDataFolder);
+
+#if DEBUG
+            string FilePath = PathDataFolder + @"\AppSettingsTest.fcd";
+#else
+            string FilePath = PathDataFolder + @"\AppSettings.fcd";
+#endif
+            using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate)) { }
+
+            using (StreamWriter sw = new StreamWriter(FilePath, false, Encoding.UTF8))
+            {
+                sw.Write($"{ApplicationSettings.CompanyName};{ApplicationSettings.FirstNoteClient};{ApplicationSettings.SecondNoteClient}");
+                sw.Close();
+            }
+        }
+        /// <summary>
+        /// Загрузка данных приложения, в статический класс Domain.ApplicationSettings
+        /// </summary>
+        public static void LoadApplicationData()
+        {
+
+#if DEBUG
+            string FilePath = PathDataFolder + @"\AppSettingsTest.fcd";
+#else
+            string FilePath = PathDataFolder + @"\AppSettings.fcd";
+#endif
+
+            StringBuilder data = new StringBuilder();
+
+            if (File.Exists(FilePath))
+                using (StreamReader sr = new StreamReader(FilePath, Encoding.UTF8))
+                    data.Append(sr.ReadToEnd());
+            else { SaveApplicationData();return; };
+
+            ApplicationSettings.CompanyName = "";
+            ApplicationSettings.FirstNoteClient = "";
+            ApplicationSettings.SecondNoteClient = "";
+
+            int i = 0;
+            while (data[i] != ';')
+            {
+                ApplicationSettings.CompanyName += data[i];
+                i++;
+            }
+            i++;
+
+            while (data[i] != ';')
+            {
+                ApplicationSettings.FirstNoteClient += data[i];
+                i++;
+            }
+            i++;
+
+            while (i < data.Length)
+            {
+                ApplicationSettings.SecondNoteClient += data[i];
+                i++;
             }
         }
     }
