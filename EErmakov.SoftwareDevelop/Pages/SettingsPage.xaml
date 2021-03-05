@@ -6,9 +6,31 @@
       xmlns:local="clr-namespace:EErmakov.SoftwareDevelop.WindowsApplication.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="670" d:DesignWidth="1000"
-      Title="SettingsPage">
+      Title="Настройки приложения" Loaded="Page_Loaded">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Название кмпании: " HorizontalAlignment="Right"/>
+                    <TextBlock Text="Название первой заметки: " HorizontalAlignment="Right"/>
+                    <TextBlock Text="Название второй заметки: " HorizontalAlignment="Right"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="200" VerticalAlignment="Center">
+                    <TextBox x:Name="tbCompanyName"/>
+                    <TextBox x:Name="tbFirstNoteClient"/>
+                    <TextBox x:Name="tbSecondNoteClient"/>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="btnSaveAppSettings" Width="220" Height="26" Content="Сохранить настройки" HorizontalAlignment="Right"
+                    Margin="0 10 0 0" Click="btnSaveAppSettings_Click"/>
+            <Button x:Name="btnSaveAppData" Width="220" Height="26" Content="Создать резервную копию таблиц" HorizontalAlignment="Right"
+                    Margin="0 10 0 0" Click="btnSaveAppData_Click"/>
+            <Button x:Name="btnLoadAppData" Width="220" Height="26" Content="Загрузить резервную копию таблиц" HorizontalAlignment="Right"
+                    Margin="0 10 0 0" Click="btnLoadAppData_Click"/>
+            <Button x:Name="btnAuthorInfo" Width="220" Height="26" Content="Разработчик" HorizontalAlignment="Right"
+                    Margin="0 10 0 0" Click="btnAuthorInfo_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

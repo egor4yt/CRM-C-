@@ -72,11 +72,11 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
 
 
             if (MessageBox.Show($"Удалить клиента \"{CurrentClient.GetFullName}\"?", "Удаление клиента", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-                {
-                    clients.Remove(CurrentClient);
-                    CSV.Save(ref clients);
-                    RefreshData();
-                }
+            {
+                clients.Remove(CurrentClient);
+                CSV.Save(ref clients);
+                RefreshData();
+            }
         }
 
         private void btnEditElement_Click(object sender, RoutedEventArgs e)
@@ -101,6 +101,10 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshData();
+            dgHeaderNote1.Header = ApplicationSettings.FirstNoteClient;
+            dgHeaderNote2.Header = ApplicationSettings.SecondNoteClient;
+            tbNote1.Text = ApplicationSettings.FirstNoteClient + ": ";
+            tbNote2.Text = ApplicationSettings.SecondNoteClient + ": ";
         }
         /// <summary>
         /// Обновление данных о клиентах в таблице.

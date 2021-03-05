@@ -13,9 +13,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
         /// Путь к каталогу, в котором хранятся данные
         /// </summary>
 #if DEBUG
-        public readonly static string PathDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculatorTests";
+        public readonly static string PathDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculatorTests\";
 #else
-        public readonly static string PathFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculator";
+        public readonly static string PathFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculator\";
 #endif
         /// <summary>
         /// Сохранение списка клиентов и присваивание идентификаторов
@@ -27,9 +27,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\ClientsTest.fcd";
+            string FilePath = PathDataFolder + @"ClientsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Clients.fcd";
+            string FilePath = PathDataFolder + @"Clients.fcd";
 #endif
 
 
@@ -69,9 +69,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             loadedClients = new List<Client>();
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\ClientsTest.fcd";
+            string FilePath = PathDataFolder + @"ClientsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Clients.fcd";
+            string FilePath = PathDataFolder + @"Clients.fcd";
 #endif
 
             StringBuilder data = new StringBuilder();
@@ -151,9 +151,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\JobsTest.fcd";
+            string FilePath = PathDataFolder + @"JobsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Jobs.fcd";
+            string FilePath = PathDataFolder + @"Jobs.fcd";
 #endif
             using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate)) { }
 
@@ -183,9 +183,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             loadedJobs = new List<Job>();
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\JobsTest.fcd";
+            string FilePath = PathDataFolder + @"JobsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Jobs.fcd";
+            string FilePath = PathDataFolder + @"Jobs.fcd";
 
 #endif
 
@@ -247,9 +247,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\OrdersTest.fcd";
+            string FilePath = PathDataFolder + @"OrdersTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Orders.fcd";
+            string FilePath = PathDataFolder + @"Orders.fcd";
 #endif
             using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate)) { }
 
@@ -279,9 +279,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
             loadedOrders = new List<Order>();
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\OrdersTest.fcd";
+            string FilePath = PathDataFolder + @"OrdersTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\Orders.fcd";
+            string FilePath = PathDataFolder + @"Orders.fcd";
 #endif
 
             StringBuilder data = new StringBuilder();
@@ -384,9 +384,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
                 Directory.CreateDirectory(PathDataFolder);
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\AppSettingsTest.fcd";
+            string FilePath = PathDataFolder + @"AppSettingsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\AppSettings.fcd";
+            string FilePath = PathDataFolder + @"AppSettings.fcd";
 #endif
             using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate)) { }
 
@@ -403,9 +403,9 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
         {
 
 #if DEBUG
-            string FilePath = PathDataFolder + @"\AppSettingsTest.fcd";
+            string FilePath = PathDataFolder + @"AppSettingsTest.fcd";
 #else
-            string FilePath = PathDataFolder + @"\AppSettings.fcd";
+            string FilePath = PathDataFolder + @"AppSettings.fcd";
 #endif
 
             StringBuilder data = new StringBuilder();

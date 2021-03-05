@@ -7,7 +7,7 @@
         xmlns:CustomControls="clr-namespace:EErmakov.SoftwareDevelop.WindowsApplication.CustomControls" x:Class="EErmakov.SoftwareDevelop.WindowsApplication.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1200" WindowStyle="None" ResizeMode="NoResize"
-        AllowsTransparency="True" Background="Transparent">
+        AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Menu header-->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
             <Border Background="#FF2A3541" CornerRadius="16 0 0 0"/>
             <TextBlock Text="FREE CRM" FontSize="28" FontFamily="Comic Sans MS"
                        VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -27,7 +27,7 @@
         </Grid>
 
         <!--Header application-->
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1" MouseDown="Grid_MouseDown">
             <Border Background="White" CornerRadius="0 16 0 0"/>
             <TextBlock x:Name="tbCurrentPage" Margin="10 0" Text="{Binding Content.Title, ElementName=MainFrame}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Button x:Name="btnCloseApp" Style="{StaticResource btnCloseApp}"
@@ -49,7 +49,7 @@
                                            IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuJobsIcon.png"/>
                 <CustomControls:MenuButton x:Name="btnMenuExport" Text="Отчет" PreviewMouseDown="btnMenuExport_PreviewMouseDown"
                                            IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuExportIcon.png"/>
-                <CustomControls:MenuButton x:Name="btnMenuSettings" Text="Настройки" MouseDown="btnMenuSettings_MouseDown"
+                <CustomControls:MenuButton x:Name="btnMenuSettings" Text="Настройки" PreviewMouseDown="btnMenuSettings_PreviewMouseDown"
                                            IconSource="/EErmakov.SoftwareDevelop.WindowsApplication;component/Resources/MenuSettingsIcon.png"/>
             </StackPanel>
 

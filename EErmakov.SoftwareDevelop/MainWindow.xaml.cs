@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using EErmakov.SoftwareDevelop.SoftwareDevelopmentKit;
 using EErmakov.SoftwareDevelop.WindowsApplication.Pages;
 
 namespace EErmakov.SoftwareDevelop.WindowsApplication
@@ -13,6 +14,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication
         {
             InitializeComponent();
             PageManager.MainFrame = MainFrame;
+            CSV.LoadApplicationData();
         }
 
         private void btnCloseApp_Click(object sender, RoutedEventArgs e)
@@ -40,9 +42,15 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication
             PageManager.MainFrame.Navigate(new ExportPage());
         }
 
-        private void btnMenuSettings_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnMenuSettings_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             PageManager.MainFrame.Navigate(new SettingsPage());
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }
