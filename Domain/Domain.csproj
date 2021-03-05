@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationSettings.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Order.cs" />
