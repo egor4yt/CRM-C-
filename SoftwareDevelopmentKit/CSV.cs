@@ -15,7 +15,7 @@ namespace EErmakov.SoftwareDevelop.SoftwareDevelopmentKit
 #if DEBUG
         public readonly static string PathDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculatorTests\";
 #else
-        public readonly static string PathFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculator\";
+        public readonly static string PathDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BuisnesCalculator\";
 #endif
         /// <summary>
         /// Сохранение списка клиентов и присваивание идентификаторов
