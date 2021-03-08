@@ -90,6 +90,8 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
             document.SaveAs2(path + "Отчет по клиентам.docx");
             document.SaveAs2(path + "Отчет по клиентам.pdf", Word.WdExportFormat.wdExportFormatPDF);
             document.Close();
+
+            MessageBox.Show($"Отчеты успешно сохранены по следующему пути:\n{path}", "Экспорт", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
