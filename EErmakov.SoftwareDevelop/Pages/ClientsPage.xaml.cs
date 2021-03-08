@@ -112,9 +112,8 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
         private void RefreshData()
         {
             CSV.Load(out clients);
-            clients = clients.OrderBy(c => c.LastName).ToList();
             dgListClients.ItemsSource = null;
-            dgListClients.ItemsSource = clients;
+            dgListClients.ItemsSource = clients.OrderBy(c => c.LastName).ToList();
             DataContext = null;
             tbLastName.Text = "";
             tbFirstName.Text = "";
