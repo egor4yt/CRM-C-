@@ -60,6 +60,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
             if (!orders.Contains(DataContext as Order)) orders.Add((DataContext as Order));
             CSV.Save(ref orders);
             RefreshData();
+            tbShowOnlyIncomplete.IsChecked = false;
             DataContext = null;
             gListOrders.Visibility = Visibility.Visible;
             gEditOrder.Visibility = Visibility.Collapsed;
@@ -94,6 +95,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
             List<Job> jobs = new List<Job>();
             CSV.Load(out jobs);
             CSV.Load(out clients);
+            clients = clients.OrderBy(c => c.LastName).ToList();
             cbClientsList.ItemsSource = clients;
             cbJobsList.ItemsSource = jobs;
 
@@ -104,6 +106,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
                 tbPrice.Text = CurrentOrder.Price.ToString();
                 Client client = clients.Where(c => c.Id == CurrentOrder.Client.Id).FirstOrDefault();
                 cbClientsList.SelectedIndex = clients.IndexOf(client);
+                cbStatusWork.SelectedIndex = (int)CurrentOrder.State;
             }
             else DataContext = new Order(new Client("Фамилия"), "Работа", 1);
 

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using EErmakov.SoftwareDevelop.Domain;
 using EErmakov.SoftwareDevelop.SoftwareDevelopmentKit;
 using EErmakov.SoftwareDevelop.WindowsApplication.Pages;
 
@@ -15,6 +16,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication
             InitializeComponent();
             PageManager.MainFrame = MainFrame;
             CSV.LoadApplicationData();
+            tbCompanyName.Text =ApplicationSettings.CompanyName;
         }
 
         private void btnCloseApp_Click(object sender, RoutedEventArgs e)

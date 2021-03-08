@@ -21,7 +21,7 @@
         <!--Menu header-->
         <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
             <Border Background="#FF2A3541" CornerRadius="16 0 0 0"/>
-            <TextBlock Text="FREE CRM" FontSize="28" FontFamily="Comic Sans MS"
+            <TextBlock x:Name="tbCompanyName" FontSize="28" FontFamily="Comic Sans MS"
                        VerticalAlignment="Center" HorizontalAlignment="Center"
                        Foreground="White"/>
         </Grid>

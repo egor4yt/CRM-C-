@@ -37,7 +37,7 @@
             </Grid>
             <DataGrid x:Name="dgListJobs" Grid.Row="1" Margin="15 5" SelectionMode="Single">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Название" Width="auto">
+                    <DataGridTemplateColumn Header="Название" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}"/>
@@ -51,7 +51,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Удаление" Width="*">
+                    <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button x:Name="btnDeleteElement" Width="40" Height="40" Margin="8" Style="{StaticResource btnDelete}"
@@ -59,7 +59,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Редактирование" Width="*">
+                    <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button x:Name="btnEditElement" Width="40" Height="40" Margin="8" Style="{StaticResource btnEdit}"
@@ -69,7 +69,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnCreateElement" Content="Добавить клиента"
+            <Button x:Name="btnCreateElement" Content="Добавить работу"
                     Width="200" Height="30" Grid.Row="2"
                     HorizontalAlignment="Right" Margin="0 0 15 0" Click="btnEditElement_Click"/>
         </Grid>

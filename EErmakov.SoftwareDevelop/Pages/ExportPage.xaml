@@ -6,9 +6,16 @@
       xmlns:local="clr-namespace:EErmakov.SoftwareDevelop.WindowsApplication.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="670" d:DesignWidth="1000"
-      Title="ExportPage">
+      Title="Создание отчёта" Loaded="Page_Loaded">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnExportClients" Width="250" Height="30" Content="Сохранить отчет по клиентам" Click="btnExportClients_Click"
+                    Margin="10"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Каждый клиент на новой странице"/>
+                <ToggleButton x:Name="tbSetInsertBreak" Margin="5 0" IsChecked="True"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

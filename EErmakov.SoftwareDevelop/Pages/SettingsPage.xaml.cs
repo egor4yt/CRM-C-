@@ -1,20 +1,10 @@
 ﻿using EErmakov.SoftwareDevelop.Domain;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using EErmakov.SoftwareDevelop.SoftwareDevelopmentKit;
 
@@ -34,10 +24,10 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
         {
             StringBuilder errors = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(tbCompanyName.Text)) errors.AppendLine();
-            if (string.IsNullOrWhiteSpace(tbFirstNoteClient.Text) || string.IsNullOrWhiteSpace(tbSecondNoteClient.Text)) errors.AppendLine();
+            if (string.IsNullOrWhiteSpace(tbCompanyName.Text)) errors.AppendLine("Название кампании не должно быть пустым");
+            if (string.IsNullOrWhiteSpace(tbFirstNoteClient.Text) || string.IsNullOrWhiteSpace(tbSecondNoteClient.Text)) errors.AppendLine("Название заметок не должно быть пустым");
 
-            if (errors.Length > 0) { System.Windows.MessageBox.Show(errors.ToString()); return; }
+            if (errors.Length > 0) { System.Windows.MessageBox.Show(errors.ToString(), "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Error); return; }
 
             ApplicationSettings.CompanyName = tbCompanyName.Text;
             ApplicationSettings.FirstNoteClient = tbFirstNoteClient.Text;

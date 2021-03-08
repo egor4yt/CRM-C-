@@ -111,8 +111,8 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
         /// </summary>
         private void RefreshData()
         {
-            tbFinder.Text = "";
             CSV.Load(out clients);
+            clients = clients.OrderBy(c => c.LastName).ToList();
             dgListClients.ItemsSource = null;
             dgListClients.ItemsSource = clients;
             DataContext = null;
@@ -121,6 +121,7 @@ namespace EErmakov.SoftwareDevelop.WindowsApplication.Pages
             tbSecondName.Text = "";
             tbFirstNote.Text = "";
             tbSecondNote.Text = "";
+            tbFinder.Text = "";
         }
 
         private void tbFinder_TextChanged(object sender, TextChangedEventArgs e)
